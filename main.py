@@ -1,6 +1,8 @@
 import os 
 import requests
 import json
+from transformers import DistilBertTokenizerFast
+
 """
 os.mkdir('squad')
 
@@ -58,3 +60,10 @@ def add_end_idx(answers, contexts):
 
 add_end_idx(train_answers, train_contexts)   
 add_end_idx(val_answers, val_contexts)   
+
+tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
+
+train_encodings = tokenizer(train_contexts, train_questions, truncation=True, padding=True)
+val_encodings = tokenizer(val_contexts, val_questions, truncation=True, padding=True)
+
+print(train_encodings.keys())
