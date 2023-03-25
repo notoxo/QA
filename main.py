@@ -6,7 +6,7 @@ import torch
 from transformers import DistilBertTokenizerFast
 
 # Create a new directory for SQuAD dataset
-"""
+
 os.mkdir('squad')
 
 # Set URL and download SQuAD dataset files (train and dev)
@@ -16,7 +16,7 @@ for file in ['train-v2.0.json', 'dev-v2.0.json']:
     with open(f'squad/{file}','wb') as f:
         for chunk in res.iter_content(chunk_size=4):
             f.write(chunk)
-"""
+
 # Function to read SQuAD dataset from a given path
 def read_squad(path):
     with open('squad/train-v2.0.json', 'rb') as f:
